@@ -16,6 +16,14 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
+      # https://github.com/npm/cli/issues/4828
+      - name: Rebuild NPM
+        run: |
+          rm -rf package-lock.json
+          rm -rf node_modules
+          npm i
+
       - name: Build site
         uses: withastro/action@v2
 
