@@ -1,0 +1,55 @@
+---
+import Container from "@components/Container.astro";
+import GitHubIcon from "@components/icons/GitHubIcon.astro";
+import ThemeAutoIcon from "@components/icons/ThemeAutoIcon.astro";
+import ThemeDarkIcon from "@components/icons/ThemeDarkIcon.astro";
+import ThemeLightIcon from "@components/icons/ThemeLightIcon.astro";
+---
+
+<footer class="animate">
+  <Container>
+    <div class="flex flex-col items-center justify-between gap-4 pe-6 ps-4 sm:flex-row">
+      <div class="section info">
+        &copy; Alex Noddings
+        <a href="https://github.com/alexnoddings/impulse-ttrpg" class="ms-2">
+          <span class="sr-only">Look at this site's source code on GitHub</span>
+          <GitHubIcon class="inline" width={22} height={22} />
+        </a>
+      </div>
+
+      <div class="section themes">
+        <div>Theme</div>
+        <button id="system-theme-button" aria-label="System theme">
+          <ThemeAutoIcon width={22} height={22} />
+        </button>
+        <button id="light-theme-button" aria-label="Light theme">
+          <ThemeLightIcon width={22} height={22} />
+        </button>
+        <button id="dark-theme-button" aria-label="Dark theme">
+          <ThemeDarkIcon width={22} height={22} />
+        </button>
+      </div>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  footer {
+    @apply pb-10 pt-6;
+  }
+
+  footer .section {
+    @apply rounded-e-md rounded-s-md px-3 py-2;
+    @apply bg-salmon/20 dark:bg-mint/20;
+  }
+
+  footer .themes {
+    @apply flex justify-center gap-4;
+  }
+
+  footer button,
+  footer a {
+    @apply fill-forest hover:fill-salmon;
+    @apply dark:fill-mist dark:hover:fill-salmon;
+  }
+</style>

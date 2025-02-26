@@ -1,0 +1,204 @@
+---
+import Container from "@components/Container.astro";
+import Impulse from "@components/Impulse.astro";
+import ImpulseHeader from "@components/ImpulseHeader.astro";
+import JumpTo from "@components/JumpTo.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+---
+
+<PageLayout title="Overview">
+  <Container>
+    <ImpulseHeader>System overview</ImpulseHeader>
+
+    <JumpTo
+      links={[
+        { text: "System reference", href: "/system" },
+        { text: "Dice probabilities", href: "/dice" },
+      ]}
+    />
+
+    <section>
+      <h2 class="section-title">Introduction</h2>
+      <p class="mb-1">
+        <Impulse /> is a loose, simplified
+        <a href="https://en.wikipedia.org/wiki/Tabletop_role-playing_game">TTRPG framework</a>
+        inspired by
+        <a href="https://en.wikipedia.org/wiki/Improvisational_theatre">improv comedy</a>
+        and
+        <a href="https://en.wikipedia.org/wiki/Yes,_and...">the principle of "yes and"</a>
+        , where games play out like a movie that everyone is co-writing in real time.
+      </p>
+      <p>
+        Being designed for one-shot campaings, <Impulse /> games don't come with intricate, fleshed-out worlds.
+        They start with a setting, some characters, and an end goal in mind. It's up to everyone playing where
+        it goes from there.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Design requirements</h2>
+      <ul class="requirements" role="list">
+        <li class="requirement">Be accessible for new TTRPG-ers</li>
+        <li class="requirement">Be engaging for veteran TTRPG-ers</li>
+        <li class="requirement">Have low friction and downtime</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Core principles</h2>
+      <div class="core-principles">
+        <div class="core-principle">
+          <h3>Simplicity</h3>
+          <p>
+            The core mechanics are incredibly simple, and should be explainable in a few short minutes. This
+            reduces the barrier to entry, and maintains flow during games.
+          </p>
+        </div>
+        <div class="core-principle">
+          <h3>Collaboration</h3>
+          <p>
+            Above all else, <Impulse /> should be a fun time with friends! The system is designed around the Players
+            and Game Director working together towards a common goal.
+          </p>
+        </div>
+        <div class="core-principle">
+          <h3>Maximise flow</h3>
+          <p><Impulse /> games should promote:</p>
+          <ul class="list-positive" role="list">
+            <li>talking to characters</li>
+            <li>performing actions</li>
+            <li>interacting with the world</li>
+          </ul>
+        </div>
+        <div class="core-principle">
+          <h3>Minimise ceremony</h3>
+          <p><Impulse /> games should reduce:</p>
+          <ul class="list-negative" role="list">
+            <li>explaining mechanics and rules</li>
+            <li>flipping through characters sheets</li>
+            <li>totting up dice rolls and modifiers</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Player characters</h2>
+      <p>
+        In <Impulse />, each Player controls one Character at a time. They're simple - a name, a personality,
+        and a set of 4 setting-dependent skills. Each skill is assigned a proficiency by the Player:
+      </p>
+      <ul class="skills" role="list">
+        <li class="skill">
+          <span class="skill-level">Bad</span>
+          <span class="skill-dice">d4</span>
+        </li>
+        <li class="skill">
+          <span class="skill-level">Average</span>
+          <span class="skill-dice">d8</span>
+        </li>
+        <li class="skill">
+          <span class="skill-level">Good</span>
+          <span class="skill-dice">d12</span>
+        </li>
+        <li class="skill">
+          <span class="skill-level">Exceptional</span>
+          <span class="skill-dice">d20</span>
+        </li>
+      </ul>
+      <p>Players must roll <i>equal to or higher</i> than a Difficulty Rating to pass skill checks.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Tell me more...</h2>
+      <p>
+        Think <Impulse /> sounds up your alley? Take a gander at the
+        <a href="/system">system reference</a>
+        for an explanation of the mechanics. All you need is a story idea and a set of dice before you're ready
+        to rock!
+      </p>
+    </section>
+  </Container>
+</PageLayout>
+
+<style>
+  .links {
+    @apply flex flex-row justify-center gap-2;
+  }
+
+  .section-title {
+    @apply mb-3 mt-8;
+    @apply text-center;
+    @apply underline decoration-salmon/75;
+  }
+
+  .requirements {
+    @apply my-1 grid grid-cols-3 gap-3;
+  }
+
+  .requirement {
+    @apply rounded-full px-3 py-1 text-center;
+    @apply bg-salmon/25 dark:bg-sky/20;
+  }
+
+  .core-principles {
+    @apply grid grid-cols-2 gap-2;
+  }
+
+  .core-principle {
+    @apply rounded-md px-3 pb-3 pt-2;
+  }
+
+  .core-principles .core-principle:nth-child(1),
+  .core-principles .core-principle:nth-child(4) {
+    @apply bg-mint/40 dark:bg-salmon/15;
+  }
+  .core-principles .core-principle:nth-child(2),
+  .core-principles .core-principle:nth-child(3) {
+    @apply bg-lavender/30 dark:bg-lavender/15;
+  }
+
+  .core-principle h3 {
+    @apply ms-2;
+  }
+
+  .core-principle ul {
+    @apply ms-4;
+  }
+
+  .skills {
+    @apply my-1 grid grid-cols-2 gap-3 md:grid-cols-4;
+  }
+
+  .skills .skill {
+    @apply rounded-lg px-1 pb-3 pt-1;
+  }
+
+  .skills .skill:nth-child(1) {
+    @apply bg-salmon/10 dark:bg-salmon/15;
+    @apply text-salmon-dark dark:text-salmon-light;
+  }
+
+  .skills .skill:nth-child(2) {
+    @apply bg-cream/10 dark:bg-cream/15;
+    @apply text-cream-dark dark:text-cream-light;
+  }
+
+  .skills .skill:nth-child(3) {
+    @apply bg-mint/15 dark:bg-mint/20;
+    @apply text-mint-dark dark:text-mint-light;
+  }
+
+  .skills .skill:nth-child(4) {
+    @apply bg-sky/15 dark:bg-sky/20;
+    @apply text-sky-dark dark:text-sky-light;
+  }
+
+  .skill-level {
+    @apply mb-1 ms-2 block text-lg;
+  }
+
+  .skill-dice {
+    @apply block text-center font-impulse text-3xl font-bold;
+  }
+</style>

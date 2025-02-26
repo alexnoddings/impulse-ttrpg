@@ -1,0 +1,9 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"span">;
+
+const props = Astro.props;
+---
+
+<span class:list={["font-impulse", props.class]}>impulse</span>

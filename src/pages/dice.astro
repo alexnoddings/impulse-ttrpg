@@ -1,0 +1,173 @@
+---
+import Container from "@components/Container.astro";
+import ImpulseHeader from "@components/ImpulseHeader.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+
+const max = 30;
+const dice = [4, 8, 12, 20];
+const precision = 3;
+
+const drs = [...Array(max).keys()].map((dr) => dr + 1);
+
+function calculateChance(dr: number, die: number) {
+  const chanceForEachSide = 1 / die;
+
+  const previousDiceRequired = Math.floor((dr - 1) / die);
+
+  const previousDiceAllSuccessChance =
+    previousDiceRequired == 0 ? 1 : Math.pow(chanceForEachSide, previousDiceRequired);
+
+  const thisDieDr = dr % die > 0 ? dr % die : die;
+
+  const thisDieSuccessfulSides = die - thisDieDr + 1;
+
+  const thisDieSuccessChance = thisDieSuccessfulSides * chanceForEachSide;
+
+  return thisDieSuccessChance * previousDiceAllSuccessChance;
+}
+
+function getLeadingZeroes(num: string) {
+  for (let i = 0; i < num.length; i++) {
+    const c = num[i];
+    if (c != "0") return i;
+  }
+  return num.length;
+}
+
+function toDisplay(chance: number) {
+  const approx = (chance * 100).toFixed(precision).padStart(7, "0");
+  const leading = getLeadingZeroes(approx);
+  return approx.substring(leading);
+}
+---
+
+<PageLayout title="Dice probabilities">
+  <Container wide={true}>
+    <ImpulseHeader>Dice probabilities</ImpulseHeader>
+    <section>
+      <div class="flex justify-center">
+        <table>
+          <caption>
+            Below are the likelihoods a Player will meet a given Difficult Rating, based on the dice they're
+            rolling.
+          </caption>
+          <thead>
+            <tr>
+              <th class="dr"></th>
+              <th class="d bad">
+                <h2>d4</h2>
+                <p>Bad</p>
+              </th>
+              <th class="d average">
+                <h2>d8</h2>
+                <p>Average</p>
+              </th>
+              <th class="d good">
+                <h2>d12</h2>
+                <p>Good</p>
+              </th>
+              <th class="d exceptional">
+                <h2>d20</h2>
+                <p>Exceptional</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              drs.map((dr) => (
+                <tr>
+                  <td class="dr">DR{dr}</td>
+                  {dice.map((die) => {
+                    const chance = calculateChance(dr, die);
+                    const display = toDisplay(chance);
+                    const hue = chance == 1 ? 150 : Math.pow(chance, 0.7) * 120;
+                    return (
+                      <td style={`background: hsla(${Math.round(hue)}, 100%, 50%, 75%)`}>
+                        <span class="chance">
+                          <span>{display}%</span>
+                        </span>
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </Container>
+</PageLayout>
+
+<style>
+  thead tr th:first-child {
+    @apply rounded-tl-xl;
+  }
+  thead tr th:last-child {
+    @apply rounded-tr-xl;
+  }
+  tbody tr:last-child td:first-child {
+    @apply rounded-bl-xl;
+  }
+  tbody tr:last-child td:last-child {
+    @apply rounded-br-xl;
+  }
+  tbody tr:last-child {
+    @apply border-none;
+  }
+
+  .d {
+    @apply w-[100px];
+    @apply border-b border-b-onyx/35 dark:border-b-onyx/50;
+    @apply font-normal;
+  }
+  .d h2 {
+    @apply text-xl;
+  }
+
+  .d.bad {
+    @apply bg-salmon/10 dark:bg-salmon/15;
+    @apply text-salmon-dark dark:text-salmon-light;
+  }
+
+  .d.average {
+    @apply bg-cream/10 dark:bg-cream/15;
+    @apply text-cream-dark dark:text-cream-light;
+  }
+
+  .d.good {
+    @apply bg-mint/15 dark:bg-mint/20;
+    @apply text-mint-dark dark:text-mint-light;
+  }
+
+  .d.exceptional {
+    @apply bg-sky/15 dark:bg-sky/20;
+    @apply text-sky-dark dark:text-sky-light;
+  }
+
+  .dr {
+    @apply w-[64px] px-2 text-left;
+    @apply bg-lavender/30 dark:bg-lavender/15;
+  }
+
+  td {
+    @apply p-0;
+  }
+
+  tr {
+    @apply border-b border-b-onyx/35 dark:border-b-onyx/50;
+  }
+
+  tr .chance {
+    @apply px-1.5 py-0.5;
+    @apply text-onyx;
+  }
+
+  tr:hover {
+    @apply font-bold;
+  }
+
+  .chance {
+    @apply flex justify-end font-mono;
+  }
+</style>

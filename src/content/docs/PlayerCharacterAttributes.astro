@@ -1,0 +1,108 @@
+<ul class="attributes" role="list">
+  <li class="attribute name">
+    <h4 class="title">A name</h4>
+    <p>
+      Names are pretty self explanatory. They should ideally be recognisable, but without being difficult to
+      remember.
+    </p>
+  </li>
+  <li class="attribute personality">
+    <h4 class="title">A personality</h4>
+    <p>
+      This should sum up the character, think:
+      <ul class="ms-4 list-dot" role="list">
+        <li>short-tempered bounty hunter</li>
+        <li>charming detective</li>
+        <li>smooth-talking doctor</li>
+      </ul>
+    </p>
+  </li>
+  <li class="attribute bad">
+    <h4 class="title">A <span class="skill">bad</span> skill (d4)</h4>
+    <p>
+      No character is perfect! This is something the character is worse at than the average person would be in
+      the setting.
+    </p>
+  </li>
+  <li class="attribute average">
+    <h4 class="title">An <span class="skill">average</span> skill (d8)</h4>
+    <p>A skill that the character is bang average at compared to a general person in the story setting.</p>
+  </li>
+  <li class="attribute good">
+    <h4 class="title">A <span class="skill">good</span> skill (d12)</h4>
+    <p>Something the character is noticably better at than the usual person in the story setting.</p>
+  </li>
+  <li class="attribute exceptional">
+    <h4 class="title">An <span class="skill">exceptional</span> skill (d20)</h4>
+    <p>
+      An exceptional proficiency is very rare, and is likely to have earned the character a degree of
+      notoriety.
+    </p>
+  </li>
+</ul>
+
+<style>
+  .attributes {
+    @apply my-1 grid grid-cols-1 gap-x-3 gap-y-2 md:grid-cols-2;
+  }
+
+  .attribute {
+    @apply bg-lavender/10 dark:bg-lavender/15;
+    @apply rounded-lg px-3 py-2;
+  }
+
+  .attribute .title {
+    @apply font-header text-lg;
+    @apply underline decoration-lavender/75;
+    @apply mb-1 mt-0;
+  }
+
+  .attribute.bad {
+    @apply bg-salmon/10 dark:bg-salmon/15;
+  }
+
+  .attribute.bad .title {
+    @apply underline decoration-salmon/75;
+  }
+
+  .attribute.bad .title .skill {
+    @apply text-salmon-dark dark:text-salmon-light;
+  }
+
+  .attribute.average {
+    @apply bg-cream/10 dark:bg-cream/15;
+  }
+  .attribute.average .title {
+    @apply underline decoration-cream/75;
+  }
+
+  .attribute.average .title .skill {
+    @apply text-cream-dark dark:text-cream-light;
+  }
+
+  .attribute.good {
+    @apply bg-mint/15 dark:bg-mint/20;
+  }
+  .attribute.good .title {
+    @apply underline decoration-mint/75;
+  }
+
+  .attribute.good .title .skill {
+    @apply text-mint-dark dark:text-mint-light;
+  }
+
+  .attribute.exceptional {
+    @apply bg-sky/15 dark:bg-sky/20;
+  }
+  .attribute.exceptional .title {
+    @apply underline decoration-sky/75;
+  }
+
+  .attribute.exceptional .title .skill {
+    @apply text-sky-dark dark:text-sky-light;
+  }
+
+  .attribute p {
+    @apply my-0;
+  }
+</style>

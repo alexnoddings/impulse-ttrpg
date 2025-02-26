@@ -1,0 +1,38 @@
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  @apply underline decoration-salmon/75;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  @apply mb-2 mt-6;
+}
+
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  @apply mb-1 mt-3;
+}
+
+.markdown-content h1 {
+  @apply decoration-4;
+}
+.markdown-content h2 {
+  @apply decoration-2;
+}
+.markdown-content h3 {
+  @apply decoration-1;
+}
+.markdown-content h4 {
+  @apply decoration-1;
+}
+
+.markdown-content p {
+  @apply mb-2;
+  @apply text-justify;
+}

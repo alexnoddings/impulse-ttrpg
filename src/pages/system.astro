@@ -1,0 +1,19 @@
+---
+import Container from "@components/Container.astro";
+import ImpulseHeader from "@components/ImpulseHeader.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import { getEntry } from "astro:content";
+import "@styles/markdown.css";
+
+const entry = await getEntry("docs", "system");
+const { Content } = await entry!.render();
+---
+
+<PageLayout title="System reference">
+  <Container wide={true}>
+    <ImpulseHeader>System reference</ImpulseHeader>
+    <article class="markdown-content">
+      <Content />
+    </article>
+  </Container>
+</PageLayout>

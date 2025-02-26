@@ -1,0 +1,17 @@
+---
+import JumpTo from "./JumpTo.astro";
+
+interface Props {
+  sections: string[];
+}
+
+const { sections } = Astro.props;
+
+function getFragment(section: string) {
+  return "#" + section.replace(" ", "-").toLowerCase();
+}
+
+const links = sections.map((section) => ({ text: section, href: getFragment(section) }));
+---
+
+<JumpTo links={links} />

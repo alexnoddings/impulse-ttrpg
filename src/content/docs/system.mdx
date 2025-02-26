@@ -1,0 +1,117 @@
+import Impulse from "@components/Impulse.astro";
+import JumpToSections from "@components/JumpToSections.astro";
+import PlayerCharacterAttributes from "@content/docs/PlayerCharacterAttributes.astro";
+
+<JumpToSections
+  sections={["Introduction", "Roles", "Characters", "Skills", "Inventories", "Health", "Turns"]}
+/>
+
+## Introduction
+
+<Impulse /> is a loose, simplified [TTRPG framework](https://en.wikipedia.org/wiki/Tabletop_role-playing_game)
+inspired by [improv comedy](https://en.wikipedia.org/wiki/Improvisational_theatre) and [the principle of "yes
+and"](https://en.wikipedia.org/wiki/Yes,_and...) , where games play out like a movie that everyone is
+co-writing in real time.
+
+Being designed for one-shot campaings, <Impulse /> games don't come with intricate, fleshed-out worlds.
+They start with a setting, some characters, and an end goal in mind.
+It's up to everyone playing where it goes from there.
+
+## Roles
+
+The **Game Director** is responsible for introducing a setting, and keeping the story on track.
+They narrate the action and play the Non-Player Characters (NPCs) in the world.
+
+**Players** are responsible for working with each other to create the story
+and drive the narrative by interacting with each other and the world.
+
+## Characters
+
+Each Player creates and controls one Character at a time. These are simple, comprising 6 attributes:
+
+<PlayerCharacterAttributes />
+
+## Skills
+
+Skills are dependent on the setting, and are defined by the Game Director.
+When the Player is asked to make a skill check, the Game Director picks which
+one or two skills are most appropriate, and decides on a Difficulty Rating for the check.
+The Player rolls one of their corresponding dice, and needs to roll _at least_ the Difficulty Rating to pass.
+
+### Difficulty Ratings (DR)
+
+DRs are a rough indication of how challenging an action is. The Game Director decides these based on the context of what's happening.
+
+For example, breaking open a rickety wooden door might be a low DR like 2, whereas lockpicking a secure vault door might be a high DR such as 18.
+
+### Critical successes
+
+If the Player rolls the maximum possible value, they roll their dice again and add their results together.
+This is done as many times as the Player rolls the maximum value.
+
+### Failures
+
+If a Player fails a check by not rolling at least the Difficulty Rating, the Game Director decides what happens as a result.
+Keeping with the principal of "yes, and", failures should alter the narrative rather than stop it.
+
+Sometimes, there won't be any repercussions, such as if a character narrowly fails the check,
+or if it's for something mundane, like shooting a tin off of a fence in a safe setting.
+
+However, if the Player rolls very low and/or is attempting something outlandish, then there _may_ be stronger repercussions.
+For example, somebody rolling a 1 on an outlandish attempt to show off by performing a backflip on a
+galloping horse while crossing a high bridge is likely to meet their end quite quickly.
+
+### Edits
+
+Players _may_ start a game with one or more Edits.
+If used, they are awarded before a game by the Game Director,
+such as for Players creating engaging characters, or turning up dressed as their character.
+
+Edits can be exchanged at any time by a Player to re-roll a dice they have just rolled, before the story continues.
+The Player takes the higher of the two outcomes, such that no Player can re-roll and end up with a lower result.
+
+### Collaboration
+
+Where sensible, the Game Director may allow Players to work together to perform an action.
+In this case, the Players will roll their respective dice, and add the results together to beat the DR.
+The Game Director may raise the DR to maintain a challenge, but it should still be easier than
+the original DR would have been to reward Players working together.
+
+## Inventories
+
+Characters don't have a pre-defined inventory.
+Instead, Players should understand the setting and have an idea of what their characters may carry.
+Players can then produce sensible items when needed, rather than being defined up-front.
+This aims to keep the action flowing, rather than blocking it while Players think of a backup plan.
+
+## Health
+
+Characters (be they Players or NPCs) don't have a health bar; instead, their health state
+is conveyed narratively, such as through cuts, wounds, or broken bones.
+
+Characters become progressively damaged during action, based on what happens to them.
+The Game Director decides how damaged a character is based on dice rolls and character actions.
+
+Characters may heal and become less damaged by performing actions during or after combat.
+Again, the new health state is decided by the Game Director.
+
+### Damage types
+
+There is no concept of damage types like lethal or non-lethal. Instead, the Game Director chooses
+what happens to a character once they become too damaged. For example, a fisticuff brawl in a bar would likely
+end with a character falling unconcious, whereas a full-blown shootout would likely end with a character dying.
+
+### Life and death
+
+To maintain a sense of risk, Players have no plot armour and can readily die.
+If this happens, the Game Director tries to bring the Player back with a new character as soon as makes sense in the story.
+
+## Turns
+
+Turns are ordered during action sequences to ensure PCs and NPCs get fair opportunities to take actions against each other.
+
+The order is decided by the Game Director based on the context. For example, characters setting a surprise ambush would act before their targets.
+All else being equal, Players will decide their order based on rolling the most relevant skill at the time.
+The Game Director then slots NPC actions in around the Players to keep action flowing.
+
+Characters should stick to one movement and one action per turn, taken in either order.

@@ -1,0 +1,23 @@
+---
+import Impulse from "@components/Impulse.astro";
+---
+
+<section class="mb-8 px-2 text-center font-impulse">
+  <div class="mb-1 flex justify-center">
+    <h1 class="relative px-2 font-impulse text-hero">
+      <a href="/" class="impulse-link">
+        <Impulse />
+      </a>
+      <div class="absolute end-0 top-1 translate-x-full font-header text-base">v1.2</div>
+    </h1>
+  </div>
+  <h1 class="text-3xl">
+    <slot />
+  </h1>
+</section>
+
+<style>
+  .impulse-link {
+    @apply underline decoration-salmon-light decoration-2;
+  }
+</style>
