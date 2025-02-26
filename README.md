@@ -1,6 +1,6 @@
 ![impulse icon](public/og.png)
 
-# Impulse
+# impulse ([site](https://impulse.alexnoddings.com/))
 
 impulse is a loose, simplified
 [TTRPG](https://en.wikipedia.org/wiki/Tabletop_role-playing_game) framework
